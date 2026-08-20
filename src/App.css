@@ -17,6 +17,15 @@
   }
 }
 
+.btn {
+  color: blue;
+}
+
+.complited{
+    background-color: blue;
+    color: aliceblue;
+}
+
 .hero {
   position: relative;
 
