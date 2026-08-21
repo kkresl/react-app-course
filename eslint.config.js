@@ -19,12 +19,20 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     rules: {
+      
+      'space-infix-ops': 'error',
+  
+      'react/jsx-equals-spacing': ['error', 'always'], 
+
       'prettier/prettier': [
         'error',
         {
+          "endOfLine" : "auto",
+          //игнорируем разницу между  CRLF и LF
           singleQuote: false,
           printWidth: 130,
           tabWidth: 2,
+          
         },
       ],
     },
