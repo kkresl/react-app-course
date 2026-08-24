@@ -1,6 +1,6 @@
 :root {
-  /* --main-bg-color: #23272f;
-  --text-color: #fff; */
+  --main-bg-color: #23272f;
+  --text-color: #fff; 
 
   --main-bg-color: #23272f;
   --text-color: #fff; 
@@ -9,8 +9,13 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
-  /* background-color: #242424; */
+  --btn-bg-color: #383b3f ;
+  --btn-text-color: #fff ;
+
+  --card-bg-color: #343a46;
+
+  color-scheme: light dark; 
+  background-color: #242424; 
 
   font-synthesis: none;
   text-rendering: optimizeLegibility ;
@@ -25,23 +30,36 @@
 }
 
 
+
 @media (prefers-color-scheme: light) {
   :root {
     --main-bg-color: #fff;
     --text-color: #000;
+
+    --btn-bg-color: #16444f ;
+    --btn-text-color: #57c4dc ;
+    
+    --card-bg-color: #ebedf0; 
+    
   }
 }
 
-@media (prefers-color-scheme: dark) {
+
+@media (prefers-color-scheme: light) {
   :root {
     --main-bg-color: #2a3243;
     --text-color: #fff;
+
+    --btn-bg-color: #383b3f ;
+    --btn-text-color: #fff ;
+
+    --card-bg-color: #343a46;
   }
 }
 
 body {
 
-  background-attachment: var(--main-bg-color);
+  background-color: var(--main-bg-color);
   color: var(--text-color);
 
 }
