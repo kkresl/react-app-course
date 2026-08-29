@@ -45,7 +45,7 @@
 }
 
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: lights) {
   :root {
     --main-bg-color: #2a3243;
     --text-color: #fff;
