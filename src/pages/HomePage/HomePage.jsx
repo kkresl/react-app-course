@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 // хуки называются с приставкой use
-import { QuestionCard } from "../../components/QuestionCard/QuestionCard";
 import { API_URL } from "../../constants/index";
-//import cls from "./HomePage.module.css";
-
-const cards = [];
+import { QuestionCardList } from "../../components/QuestionCardList";
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState([]);
@@ -22,6 +19,7 @@ export const HomePage = () => {
         /* преобразовываем questions в обьект ; */
       }
       setQuestions(questions);
+
       console.log("questions", questions);
     } catch (error) {
       console.error(error);
@@ -32,11 +30,17 @@ export const HomePage = () => {
     getQuestions();
   }, []);
 
+  {
+    /* {} - что делать, []- когда повторять (dependencies) */
+  }
+
   return (
     <>
-      {questions.map((question, index) => {
-        return <QuestionCard card={question} key={index} />;
-      })}
+      {/* {questions.map((card, index) => {
+        return <QuestionCard key={index} />;
+      })} */}
+
+      <QuestionCardList cards={questions} />
 
       {/* <button onClick={getQuestions}> get questions </button> */}
     </>
