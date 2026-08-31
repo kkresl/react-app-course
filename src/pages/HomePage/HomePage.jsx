@@ -1,30 +1,23 @@
 import { useState, useEffect } from "react";
-// хуки называются с приставкой use
 import { API_URL } from "../../constants/index";
-import { QuestionCardList } from "../../components/QuestionCardList";
+import { useFetch } from "../../hooks/useFetch";
+// хуки называются с приставкой use
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState([]);
 
+  const [getQuestions, isLoading, error] = useFetch(async (url) => {
+    const response = await fetch(`${API_URL}`);
+    const questions = await response.json();
+
+    setQuestions(questions);
+
+    return questions;
+  });
+
   {
     /* описываем состояние ; */
   }
-
-  const getQuestions = async () => {
-    try {
-      const response = await fetch(`${API_URL}`);
-      const questions = await response.json();
-
-      {
-        /* преобразовываем questions в обьект ; */
-      }
-      setQuestions(questions);
-
-      console.log("questions", questions);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useEffect(() => {
     getQuestions();
@@ -36,13 +29,8 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* {questions.map((card, index) => {
-        return <QuestionCard key={index} />;
-      })} */}
-
+      {isLoading && <Loader />}
       <QuestionCardList cards={questions} />
-
-      {/* <button onClick={getQuestions}> get questions </button> */}
     </>
   );
 };
