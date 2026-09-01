@@ -5,6 +5,8 @@
   --main-bg-color: #23272f;
   --text-color: #fff; 
 
+  --main-loader-color: #23272f;
+
   font-family: Integer, system-ui, Avenir, Arial, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -41,11 +43,12 @@
     
     --card-bg-color: #ebedf0; 
     
+    --main-loader-color: #23272f;
   }
 }
 
 
-@media (prefers-color-scheme: lights) {
+@media (prefers-color-scheme: light) {
   :root {
     --main-bg-color: #2a3243;
     --text-color: #fff;
@@ -54,6 +57,8 @@
     --btn-text-color: #fff ;
 
     --card-bg-color: #343a46;
+
+    --main-loader-color: #fff;
   }
 }
 

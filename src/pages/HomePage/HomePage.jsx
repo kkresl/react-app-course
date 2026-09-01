@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { API_URL } from "../../constants/index";
 import { useFetch } from "../../hooks/useFetch";
 import { QuestionCardList } from "../../components/QuestionCardList";
 import { Loader } from "../../components/Loader";
+import cls from "./HomePage.module.css";
+import { SearchInput } from "../../components/SearchInput";
 // хуки называются с приставкой use
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const [getQuestions, isLoading, error] = useFetch(async (url) => {
     const response = await fetch(`${API_URL}/${url}`);
@@ -22,7 +25,6 @@ export const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log("useEffect запустился");
     getQuestions("react");
   }, []);
 
@@ -30,8 +32,17 @@ export const HomePage = () => {
     /* {} - что делать, []- когда повторять (dependencies) */
   }
 
+  const onSearchChangeHandler = (e) => {
+    console.log(e.target.value);
+    setSearchValue(e.target.value);
+  };
+
   return (
     <>
+      <div className={cls.controlsContainer}>
+        <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
+      </div>
+
       {isLoading && <Loader />}
       {error && <p> {error} </p>}
       <QuestionCardList cards={questions} />
