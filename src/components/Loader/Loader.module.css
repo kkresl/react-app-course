@@ -113,3 +113,28 @@
       -2em -2em 0 0.2em;
   }
 }
+
+
+/* Small loader for card */
+.smallCardLoader{
+  --color-1: #fff;
+  --size: 1px;
+
+  width: calc(20 * var(--size));
+  height: calc(20 * var(--size));
+  border: calc(5 * var(--size)) dotted var(--color-1);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

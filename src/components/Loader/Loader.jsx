@@ -7,3 +7,7 @@ export const Loader = () => {
     </div>
   );
 };
+
+export const SmallCardLoader = () => {
+  return <span className={cls.smallCardLoader}></span>;
+};
