@@ -6,6 +6,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { QuestionPage } from "./pages/QuestionPage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AddQuestionPage } from "./pages/AddQuestionPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/forbidden" element={<div> forbidden </div>} />
-          <Route path="/addquestion" element={<div> addquestion </div>} />
+          <Route path="/addquestion" element={<AddQuestionPage />} />
           <Route path="/question/:id" element={<QuestionPage />} />
           {/* добавляет динамику ":" */}
           <Route path="*" element={<NotFoundPage />} />
