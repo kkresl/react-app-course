@@ -26,6 +26,10 @@ const createCardAction = async (_prevState, formData) => {
       }),
     });
 
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
     const question = response.json();
     toast.success("New question is successfully created", {
       autoClose: 1200,
@@ -34,6 +38,7 @@ const createCardAction = async (_prevState, formData) => {
     return isClearForm ? {} : question;
   } catch (error) {
     toast.error(error.message);
+    return {};
   }
 };
 
