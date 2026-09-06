@@ -6,6 +6,8 @@ import { useEffect, useId, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { API_URL } from "../../constants";
 import { Loader, SmallCardLoader } from "../../components/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const card = null;
 
@@ -34,6 +36,10 @@ export const QuestionPage = () => {
     const data = await response.json();
 
     setCard(data);
+
+    toast.success("Question updated!", {
+      autoClose: 1200,
+    });
   });
 
   useEffect(() => {
