@@ -1,43 +1,44 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
-import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import { defineConfig, globalIgnores } from "eslint/config";
+import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
+
+  js.configs.recommended,
+  eslintPluginPrettier,
+
   {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
+    files: ["**/*.{js,jsx}"],
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
     languageOptions: {
       globals: globals.browser,
-      parserOptions: { ecmaFeatures: { jsx: true } },
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
     },
     rules: {
-      
-      'space-infix-ops': 'error',
-  
-      'react/jsx-equals-spacing': ['error', 'always'], 
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
 
-      'prettier/prettier': [
-        'error',
+      "space-infix-ops": "error",
+      "no-console": "error",
+
+      "prettier/prettier": [
+        "error",
         {
-          "endOfLine" : "auto",
-          //игнорируем разницу между  CRLF и LF
+          endOfLine: "auto",
           singleQuote: false,
           printWidth: 130,
           tabWidth: 2,
-          
         },
       ],
     },
   },
-  eslintPluginPrettier,
 ]);
-
-
